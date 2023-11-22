@@ -1,11 +1,8 @@
 package com.example.padelappproject
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -21,19 +18,23 @@ class MainActivity : ComponentActivity() {
     private lateinit var auth:FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            PadelAppProjectTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
+        setContentView(R.layout.activity_main)
+
+    }
+
+    // Called when the "Login" button is clicked
+    fun goToLogin(view: android.view.View) {
+        startActivity(Intent(this, LoginActivity::class.java))
+    }
+
+    // Called when the "Register" button is clicked
+    fun goToRegister(view: android.view.View) {
+        startActivity(Intent(this, RegisterActivity::class.java))
     }
 }
+
+
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {

@@ -13,20 +13,30 @@
         android:layout_marginBottom="16dp"/>
 
     <EditText
+        android:id="@+id/editTextNameRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Username"
+        android:inputType="text" />
+
+    <EditText
         android:id="@+id/editTextPasswordRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:inputType="textPassword"
         android:layout_below="@id/editTextEmailRegister"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="16dp"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
         android:layout_below="@id/editTextPasswordRegister"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="85dp"
+        android:text="Register" />
 
 </RelativeLayout>
