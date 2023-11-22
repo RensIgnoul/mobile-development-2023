@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "939421466647",
+    "project_id": "mobiledev23-5f142",
+    "storage_bucket": "mobiledev23-5f142.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939421466647:android:0bfb68e9f23c3dd64c5c52",
+        "android_client_info": {
+          "package_name": "com.example.padelappproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFfBAP8znzDjKG8TGggrAIjxSfWX6Phg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
