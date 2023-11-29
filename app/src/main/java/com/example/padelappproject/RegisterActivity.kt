@@ -1,5 +1,5 @@
 package com.example.padelappproject
-
+//23
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import androidx.appcompat.app.AppCompatActivity
 import com.example.padelappproject.Model.Match
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
@@ -48,26 +47,22 @@ class RegisterActivity : ComponentActivity() {
             return
         }
 
-        // Create user in Firebase Authentication
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Get the UID of the registered user
                     val userId = auth.currentUser?.uid
 
-                    // Create a user document in Firestore with name, UID, and an empty list for matches
                     if (userId != null) {
                         val user = hashMapOf(
                             "name" to name,
                             "uid" to userId,
-                            "matches" to mutableListOf<String>() // Initialize with an empty list of match IDs
+                            "matches" to mutableListOf<String>()
                         )
 
                         firestore.collection("users")
                             .document(userId)
                             .set(user)
                             .addOnSuccessListener {
-                                // Add a test match for the newly registered user
                                 addTestMatchForUser(userId)
 
                                 Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
@@ -87,25 +82,20 @@ class RegisterActivity : ComponentActivity() {
     private fun addTestMatchForUser(userId: String) {
         val testMatch = createTestMatch(userId)
 
-        // Add the test match to the "matches" collection and store the reference in the user's document
         firestore.collection("matches")
             .add(testMatch)
             .addOnSuccessListener { matchDocument ->
-                // Update the user's document with the reference to the match
                 val matchId = matchDocument.id
                 firestore.collection("users")
                     .document(userId)
                     .update("matches", FieldValue.arrayUnion(matchId))
                     .addOnSuccessListener {
-                        // Log or handle success if needed
                     }
                     .addOnFailureListener { e ->
-                        // Handle the failure
                         Toast.makeText(this, "Error updating user document: $e", Toast.LENGTH_SHORT).show()
                     }
             }
             .addOnFailureListener { e ->
-                // Handle the failure
                 Toast.makeText(this, "Error adding test match: $e", Toast.LENGTH_SHORT).show()
             }
     }
@@ -117,10 +107,9 @@ class RegisterActivity : ComponentActivity() {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault())
         val startDate = dateFormat.format(currentTimeMillis)
 
-        // Create a test match with the user as player1 and other default values
         return Match(
             startDateTime = startDate,
-            participants = mapOf("position1" to userId),
+            participants = mapOf("player1" to userId),
             location = "Here",
             court = "DefaultCourtId" // Provide the actual default court ID
         )

@@ -6,13 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
-import com.example.padelappproject.Model.Match
+
 
 class MatchAdapter(private val matchIds: List<String>) : RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
     class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textViewMatchId: TextView = itemView.findViewById(R.id.textViewMatchId)
-        // Add references to other views for other match properties
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchViewHolder {
@@ -23,7 +22,6 @@ class MatchAdapter(private val matchIds: List<String>) : RecyclerView.Adapter<Ma
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val matchId = matchIds[position]
         holder.textViewMatchId.text = "Match ID: $matchId"
-        // Set other match properties to their respective TextViews or views
     }
 
     override fun getItemCount(): Int {

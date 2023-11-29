@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextEmailRegister"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="87dp"
         android:layout_marginBottom="16dp"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/editTextPasswordRegister"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="93dp"
         android:text="Register" />
 
 </RelativeLayout>

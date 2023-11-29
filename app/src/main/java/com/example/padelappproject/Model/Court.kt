@@ -1,8 +1,8 @@
 package com.example.padelappproject.Model
 
-data class Court (
-    val name:String,
-    val address: String)
-{
+import java.io.Serializable
 
-}
+data class Court (
+    var id: String = "",
+    val name:String="",
+    val address: String=""):Serializable

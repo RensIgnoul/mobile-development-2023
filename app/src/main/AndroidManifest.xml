@@ -26,6 +26,9 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity"/>
+        <activity android:name=".CourtListActivity"/>
+        <activity android:name=".CourtDetailActivity"/>
+        <activity android:name=".DayDetailActivity"/>
     </application>
 
 </manifest>
