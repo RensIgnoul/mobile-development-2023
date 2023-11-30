@@ -24,15 +24,51 @@ class CourtDetailActivity : ComponentActivity() {
         courtNameTextView.text = courtItem.name
         locationTextView.text = courtItem.address
 
-        val daysListView: ListView = findViewById(R.id.daysListView)
+        //val daysListView: ListView = findViewById(R.id.daysListView)
 
         // Fetch days from Firestore and populate the ListView
-        fetchDaysFromFirestore(courtItem.id, daysListView)
+        //fetchDaysFromFirestore(courtItem.id, daysListView)
 
-        val buttonGoToOtherActivity: Button = findViewById(R.id.buttonGoToOtherActivity)
-        buttonGoToOtherActivity.setOnClickListener {
+        val buttonGoToMon: Button = findViewById(R.id.buttonMon)
+        buttonGoToMon.setOnClickListener {
             val intent = Intent(this, DayDetailActivity::class.java)
-            intent.putExtra("EXTRA_STRING", "ABC")
+            intent.putExtra("SELECTED_DAY", "monday")
+            intent.putExtra("COURT",courtItem.id)
+            startActivity(intent)
+        }
+        val buttonGoToTue: Button = findViewById(R.id.buttonTue)
+        buttonGoToTue.setOnClickListener {
+            val intent = Intent(this, DayDetailActivity::class.java)
+            intent.putExtra("SELECTED_DAY", "tuesday")
+            intent.putExtra("COURT",courtItem.id)
+            startActivity(intent)
+        }
+        val buttonGoToWed: Button = findViewById(R.id.buttonWed)
+        buttonGoToWed.setOnClickListener {
+            val intent = Intent(this, DayDetailActivity::class.java)
+            intent.putExtra("SELECTED_DAY", "wednesday")
+            intent.putExtra("COURT",courtItem.id)
+            startActivity(intent)
+        }
+        val buttonGoToThu: Button = findViewById(R.id.buttonThu)
+        buttonGoToThu.setOnClickListener {
+            val intent = Intent(this, DayDetailActivity::class.java)
+            intent.putExtra("SELECTED_DAY", "thursday")
+            intent.putExtra("COURT",courtItem.id)
+            startActivity(intent)
+        }
+        val buttonGoToFri: Button = findViewById(R.id.buttonFri)
+        buttonGoToFri.setOnClickListener {
+            val intent = Intent(this, DayDetailActivity::class.java)
+            intent.putExtra("SELECTED_DAY", "friday")
+            intent.putExtra("COURT",courtItem.id)
+            startActivity(intent)
+        }
+        val buttonGoToSat: Button = findViewById(R.id.buttonSat)
+        buttonGoToSat.setOnClickListener {
+            val intent = Intent(this, DayDetailActivity::class.java)
+            intent.putExtra("SELECTED_DAY", "saturday")
+            intent.putExtra("COURT",courtItem.id)
             startActivity(intent)
         }
     }

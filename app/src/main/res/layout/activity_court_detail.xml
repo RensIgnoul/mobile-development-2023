@@ -23,21 +23,47 @@
         android:layout_below="@id/CourtName"
         android:layout_marginTop="8dp"/>
 
-    <ListView
-        android:id="@+id/daysListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/Location"
+    <Button
+        android:id="@+id/buttonMon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:divider="@android:color/darker_gray"
-        android:dividerHeight="1dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </ListView>
-
- 
+        android:layout_below="@id/Location"
+        android:text="Monday" />
+    <Button
+        android:id="@+id/buttonTue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonMon"
+        android:text="Tuesday" />
+    <Button
+        android:id="@+id/buttonWed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonTue"
+        android:text="Wednesday" />
+    <Button
+        android:id="@+id/buttonThu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonWed"
+        android:text="Thursday" />
+    <Button
+        android:id="@+id/buttonFri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonThu"
+        android:text="Friday" />
+    <Button
+        android:id="@+id/buttonSat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/buttonFri"
+        android:text="Saturday" />
 
 </RelativeLayout>
