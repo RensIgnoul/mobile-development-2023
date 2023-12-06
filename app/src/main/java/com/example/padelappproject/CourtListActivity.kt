@@ -2,7 +2,12 @@ package com.example.padelappproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.padelappproject.Model.Court
@@ -17,10 +22,25 @@ class CourtListActivity:ComponentActivity() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_court_list)
+            //setContentView(R.layout.activity_court_list)
 
             recyclerView = findViewById(R.id.recyclerView)
             recyclerView.layoutManager = LinearLayoutManager(this)
 
+
+            // Set up button click listeners
+            val buttonActivity1: Button = findViewById(R.id.buttonActivity1)
+            val buttonActivity2: Button = findViewById(R.id.buttonActivity2)
+
+            buttonActivity1.setOnClickListener {
+
+                startActivity(Intent(this, ProfileActivity::class.java))
+            }
+
+            buttonActivity2.setOnClickListener {
+
+                startActivity(Intent(this, LoginActivity::class.java))
+            }
             // Initialize Firestore
             val firestore = FirebaseFirestore.getInstance()
             val courtCollection = firestore.collection("courts")

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="position_options">
+        <item>Front</item>
+        <item>Back</item>
+        <item>No Preference</item>
+    </array>
+
+    <array name="hand_options">
+        <item>Left</item>
+        <item>Right</item>
+        <item>No Preference</item>
+    </array>
+
+    <array name="gender_options">
+        <item>Men only</item>
+        <item>Women only</item>
+        <item>No Preference</item>
+    </array>
+
+</resources>

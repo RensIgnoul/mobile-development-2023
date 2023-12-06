@@ -56,6 +56,10 @@ class RegisterActivity : ComponentActivity() {
                         val user = hashMapOf(
                             "name" to name,
                             "uid" to userId,
+                            "handpreference" to "No Preference",
+                            "positionpreference" to "No Preference",
+                            "genderpreference" to "No Preference",
+                            "gender" to "Not Set",
                             "matches" to mutableListOf<String>()
                         )
 
