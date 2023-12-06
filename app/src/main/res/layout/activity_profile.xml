@@ -9,12 +9,11 @@
     <!-- User Name -->
     <ImageView
         android:id="@+id/profileImageView"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="1dp"
-        android:scaleType="center"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/usernameTextView"
@@ -29,7 +28,7 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/handpreference"
+        android:id="@+id/positionpreference"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user@example.com"
@@ -39,17 +38,7 @@
         android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"/>
     <TextView
-        android:id="@+id/positionpreference"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="user@example.com"
-        android:textSize="14sp"
-        android:textColor="@android:color/black"
-        android:layout_below="@id/handpreference"
-        android:layout_marginTop="8dp"
-        android:layout_centerHorizontal="true"/>
-    <TextView
-        android:id="@+id/genderpreference"
+        android:id="@+id/handpreference"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user@example.com"
@@ -59,11 +48,46 @@
         android:layout_marginTop="8dp"
         android:layout_centerHorizontal="true"/>
 
+    <TextView
+        android:id="@+id/genderpreference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="user@example.com"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/handpreference"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"/>
+
     <Button
         android:id="@+id/editProfileButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/genderpreference"
+        android:layout_centerHorizontal="true"
         android:text="Edit Profile" />
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonActivity1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile" />
+
+        <Button
+            android:id="@+id/buttonActivity2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Courts" />
+
+    </LinearLayout>
     <!-- Add other views or components as needed -->
 
 </RelativeLayout>

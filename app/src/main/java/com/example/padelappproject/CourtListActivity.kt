@@ -33,12 +33,12 @@ class CourtListActivity:ComponentActivity() {
             val buttonActivity2: Button = findViewById(R.id.buttonActivity2)
 
             buttonActivity1.setOnClickListener {
-
+                finish()
                 startActivity(Intent(this, ProfileActivity::class.java))
             }
 
             buttonActivity2.setOnClickListener {
-
+                finish()
                 startActivity(Intent(this, LoginActivity::class.java))
             }
             // Initialize Firestore
