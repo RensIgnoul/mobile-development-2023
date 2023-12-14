@@ -35,5 +35,6 @@
         <activity android:name=".MatchCreateActivity"/>
         <activity android:name=".MatchListActivity"/>
         <activity android:name=".MatchDayActivity"/>
+        <activity android:name=".MatchDetailActivity"/>
     </application>
 </manifest>

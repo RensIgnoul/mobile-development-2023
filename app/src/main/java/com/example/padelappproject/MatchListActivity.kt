@@ -1,7 +1,10 @@
 package com.example.padelappproject
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.padelappproject.Model.Match
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,6 +18,8 @@ class MatchListActivity: ComponentActivity() {
         setContentView(R.layout.actitivity_match_list)
 
 
+        recyclerView = findViewById(R.id.recyclerView)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val firestore = FirebaseFirestore.getInstance()
         val matchCollection = firestore.collection("matches")
@@ -24,11 +29,36 @@ class MatchListActivity: ComponentActivity() {
 
             for(document in querySnapshot){
                 val matchItem = document.toObject(Match::class.java)
+                matchItem.titel = document.id
                 matchList.add(matchItem)
             }
 
-            adapter = MatchAdapter(matchList)
+            adapter = MatchAdapter(matchList){
+                match -> navigateToDetailPage(match)
+            }
             recyclerView.adapter = adapter
         }
+
+        val buttonActivity1: Button = findViewById(R.id.buttonActivity1)
+        val buttonActivity2: Button = findViewById(R.id.buttonActivity2)
+        val buttonMatches: Button = findViewById(R.id.buttonMatches);
+        buttonActivity1.setOnClickListener {
+            finish()
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        buttonActivity2.setOnClickListener {
+            finish()
+            startActivity(Intent(this, CourtListActivity::class.java))
+        }
+        buttonMatches.setOnClickListener{
+            finish()
+            startActivity(Intent(this,MatchListActivity::class.java))
+        }
+    }
+    private fun navigateToDetailPage(match:Match){
+        val intent = Intent(this, MatchDetailActivity::class.java)
+        intent.putExtra("MATCH_ITEM",match)
+        startActivity(intent)
     }
 }

@@ -3,10 +3,9 @@ package com.example.padelappproject.Model
 import java.io.Serializable
 
 data class Match(
-    val startDateTime: String="",
-    val participants: Map<String, String?>,
-    val location: String="",
+    val startDay: String="",
+    val startTime: String="",
+    val participants: Map<String, String?> = emptyMap(),
     val court: String="",
-    val titel: String=""
-):Serializable {
-}
+    var titel: String=""
+): Serializable

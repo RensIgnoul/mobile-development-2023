@@ -39,7 +39,7 @@ class CourtListActivity:ComponentActivity() {
 
             buttonActivity2.setOnClickListener {
                 finish()
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, CourtListActivity::class.java))
             }
             buttonMatches.setOnClickListener{
                 finish()

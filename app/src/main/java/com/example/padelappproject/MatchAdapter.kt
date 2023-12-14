@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.padelappproject.Model.Match
 
 
-class MatchAdapter(private val matchList: List<Match>) :
+class MatchAdapter(private val matchList: List<Match>,
+    private val onItemClick:(Match) -> Unit) :
     RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
     class MatchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,8 +24,11 @@ class MatchAdapter(private val matchList: List<Match>) :
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val matchItem = matchList[position]
+        holder.textViewMatchId.text = "Match " +position;
 
-
+        holder.itemView.setOnClickListener{
+            onItemClick(matchItem)
+        }
     }
 
     override fun getItemCount(): Int {

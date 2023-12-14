@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.padelappproject.Model.Match
 import com.example.padelappproject.Model.Times
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
@@ -56,6 +57,11 @@ class TimeListAdapter (
                     timeslotItem.reserved = true
                     notifyItemChanged(position)
 
+                    if(isMatch){
+                        val match = createMatch(position)
+                        val firestore = FirebaseFirestore.getInstance()
+                        firestore.collection("matches").add(match)
+                    }
                     //reservePreviousTwoSlots(collection,position)
                     reserveNextTwoSlots(collection, position + 1)
                     reserveNextTwoSlots(collection, position + 2)
@@ -79,7 +85,6 @@ class TimeListAdapter (
                     "reservedBy" to FirebaseAuth.getInstance().currentUser?.uid))
                 .addOnSuccessListener {
                     nextTimeslot.reserved = true
-
                     notifyItemChanged(position)
                 }
                 .addOnFailureListener { e ->
@@ -128,5 +133,16 @@ class TimeListAdapter (
                     // Handle failures
                 }
         }
+    }
+    private fun createMatch(position: Int):Match {
+        val startDay: String = dayString
+        val startTime: String = timesList[position].time
+        val auth = FirebaseAuth.getInstance()
+        val court = courtId
+        return Match(startDay,
+            startTime,
+            mapOf("player1" to (auth.currentUser?.uid ?: "")),
+            courtId
+        )
     }
 }

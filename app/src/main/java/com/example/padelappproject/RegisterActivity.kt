@@ -112,9 +112,7 @@ class RegisterActivity : ComponentActivity() {
         val startDate = dateFormat.format(currentTimeMillis)
 
         return Match(
-            startDateTime = startDate,
             participants = mapOf("player1" to userId),
-            location = "Here",
             court = "DefaultCourtId" // Provide the actual default court ID
         )
     }

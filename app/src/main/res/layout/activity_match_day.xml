@@ -62,11 +62,4 @@
         android:layout_marginTop="16dp"
         android:layout_below="@id/buttonFri"
         android:text="Saturday" />
-    <Button
-        android:id="@+id/buttonMatch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/buttonSat"
-        android:text="Book Match" />
 </RelativeLayout>

@@ -28,6 +28,7 @@ class ProfileActivity : ComponentActivity() {
 
         val buttonActivity1: Button = findViewById(R.id.buttonActivity1)
         val buttonActivity2: Button = findViewById(R.id.buttonActivity2)
+        val buttonMatches: Button = findViewById(R.id.buttonMatches);
 
         buttonActivity1.setOnClickListener {
             finish()
@@ -37,6 +38,10 @@ class ProfileActivity : ComponentActivity() {
         buttonActivity2.setOnClickListener {
             finish()
             startActivity(Intent(this, CourtListActivity::class.java))
+        }
+        buttonMatches.setOnClickListener{
+            finish()
+            startActivity(Intent(this,MatchListActivity::class.java))
         }
 
         if (currentUser != null) {
