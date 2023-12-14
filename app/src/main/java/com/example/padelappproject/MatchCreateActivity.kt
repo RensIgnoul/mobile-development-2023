@@ -9,12 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.padelappproject.Model.Times
 import com.google.firebase.firestore.FirebaseFirestore
 
-class DayDetailActivity:ComponentActivity() {
+class MatchCreateActivity:ComponentActivity() {
+
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: TimeListAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_day_detail)
+        setContentView(R.layout.activity_match_create)
 
         val dayString = intent.getStringExtra("SELECTED_DAY")
         val courtId = intent.getStringExtra("COURT")
@@ -31,15 +32,15 @@ class DayDetailActivity:ComponentActivity() {
         collection.get().addOnSuccessListener { querySnapshot ->
             val timeslotList = mutableListOf<Times>()
 
-            for (document in querySnapshot){
-                val time = Times(document.id,document.getBoolean("reserved")!!)
+            for (document in querySnapshot) {
+                val time = Times(document.id, document.getBoolean("reserved")!!)
                 timeslotList.add(time)
             }
 
             for (time in timeslotList) {
                 Log.d("Firestore", "Document ID: ${time}, Reserved: ${time.reserved}")
             }
-            adapter = TimeListAdapter(timeslotList,courtId,dayString,false)
+            adapter = TimeListAdapter(timeslotList, courtId, dayString,true)
 
             recyclerView.adapter = adapter
         }

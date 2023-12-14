@@ -14,7 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 class TimeListAdapter (
     private val timesList : List<Times>,
     private val courtId: String,
-    private val dayString: String
+    private val dayString: String,
+    private val isMatch: Boolean
     ):RecyclerView.Adapter<TimeListAdapter.ViewHolder>(){
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val timeValue: TextView = itemView.findViewById(R.id.TimeValue)
@@ -49,7 +50,8 @@ class TimeListAdapter (
             collection.document(timeslotItem.time)
                 .update(mapOf("reserved" to true,
                     "reservedBy" to FirebaseAuth.getInstance().currentUser?.uid,
-                    "canInitiateReservation" to false))
+                    "canInitiateReservation" to false,
+                    "isMatch" to isMatch))
                 .addOnSuccessListener {
                     timeslotItem.reserved = true
                     notifyItemChanged(position)

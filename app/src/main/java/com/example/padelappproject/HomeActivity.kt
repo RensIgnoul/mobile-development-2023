@@ -30,7 +30,7 @@ class HomeActivity : ComponentActivity() {
                     if (document.exists()) {
                         val user = document.toObject(User::class.java)
                         if (user != null) {
-                            setupRecyclerView(user.matches)
+                            //setupRecyclerView(user.matches)
                         }
                     }
                 }
@@ -40,11 +40,11 @@ class HomeActivity : ComponentActivity() {
         }
     }
 
-    private fun setupRecyclerView(matchIds: List<String>) {
+   /* private fun setupRecyclerView(matchIds: List<String>) {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val adapter = MatchAdapter(matchIds)
         recyclerView.adapter = adapter
-    }
+    }*/
 }

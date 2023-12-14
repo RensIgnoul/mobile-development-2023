@@ -31,7 +31,7 @@ class CourtListActivity:ComponentActivity() {
             // Set up button click listeners
             val buttonActivity1: Button = findViewById(R.id.buttonActivity1)
             val buttonActivity2: Button = findViewById(R.id.buttonActivity2)
-
+            val buttonMatches: Button = findViewById(R.id.buttonMatches);
             buttonActivity1.setOnClickListener {
                 finish()
                 startActivity(Intent(this, ProfileActivity::class.java))
@@ -40,6 +40,10 @@ class CourtListActivity:ComponentActivity() {
             buttonActivity2.setOnClickListener {
                 finish()
                 startActivity(Intent(this, LoginActivity::class.java))
+            }
+            buttonMatches.setOnClickListener{
+                finish()
+                startActivity(Intent(this,MatchListActivity::class.java))
             }
             // Initialize Firestore
             val firestore = FirebaseFirestore.getInstance()

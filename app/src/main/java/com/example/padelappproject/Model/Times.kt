@@ -5,5 +5,6 @@ import java.io.Serializable
 data class Times (val time:String="",
                   var reserved : Boolean = false,
     var reservedBy:String="",
-    var canInitiateReservation: Boolean = true
+    var canInitiateReservation: Boolean = true,
+    var isMatch: Boolean = false
 ):Serializable
