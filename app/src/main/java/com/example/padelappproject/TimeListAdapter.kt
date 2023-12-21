@@ -17,7 +17,7 @@ class TimeListAdapter (
     private val courtId: String,
     private val dayString: String,
     private val isMatch: Boolean
-    ):RecyclerView.Adapter<TimeListAdapter.ViewHolder>(){
+):RecyclerView.Adapter<TimeListAdapter.ViewHolder>(){
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val timeValue: TextView = itemView.findViewById(R.id.TimeValue)
         val reserved: TextView = itemView.findViewById(R.id.Reserved)
@@ -33,7 +33,23 @@ class TimeListAdapter (
                                   ViewHolder, position: Int) {
         val timeslotItem = timesList[position]
         holder.timeValue.text = timeslotItem.time
-        holder.reserved.text = if (timeslotItem.reserved || !timeslotItem.canInitiateReservation) "Cannot be reserved" else "Can be reserved"
+
+
+        FirebaseFirestore.getInstance().collection("courts").document(courtId).collection("timeslots")
+            .document(dayString)
+            .collection("times")
+            .document(timeslotItem.time)
+            .get()
+            .addOnSuccessListener {
+                    documentsnapshot ->
+                if(FirebaseAuth.getInstance().currentUser?.uid == documentsnapshot.getString("reservedBy")){
+                    holder.reserved.text = "Reserved by you"
+                } else if (timeslotItem.reserved || !timeslotItem.canInitiateReservation){
+                    holder.reserved.text =  "Cannot be reserved"
+                } else {
+                    holder.reserved.text = "Can be reserved"
+                }
+            }
 
         val canInitiateReservation = timeslotItem.canInitiateReservation
         val notReserved = !timeslotItem.reserved
@@ -42,7 +58,6 @@ class TimeListAdapter (
         val isButtonVisible = canInitiateReservation && notReserved && isNotLastTwoItems
 
         holder.resButton.visibility = if (isButtonVisible) View.VISIBLE else View.GONE
-
         holder.resButton.setOnClickListener {
             // When the button is clicked, update the reserved value in the Firestore document
 
