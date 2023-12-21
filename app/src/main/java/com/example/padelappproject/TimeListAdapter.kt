@@ -33,9 +33,15 @@ class TimeListAdapter (
                                   ViewHolder, position: Int) {
         val timeslotItem = timesList[position]
         holder.timeValue.text = timeslotItem.time
-        holder.reserved.text = if (timeslotItem.reserved) "Cannot be reserved" else "Can be reserved"
+        holder.reserved.text = if (timeslotItem.reserved || !timeslotItem.canInitiateReservation) "Cannot be reserved" else "Can be reserved"
 
-        holder.resButton.visibility = if (!timeslotItem.canInitiateReservation || timeslotItem.reserved || position >= itemCount - 2) View.GONE else View.VISIBLE
+        val canInitiateReservation = timeslotItem.canInitiateReservation
+        val notReserved = !timeslotItem.reserved
+        val isNotLastTwoItems = position < itemCount - 2
+
+        val isButtonVisible = canInitiateReservation && notReserved && isNotLastTwoItems
+
+        holder.resButton.visibility = if (isButtonVisible) View.VISIBLE else View.GONE
 
         holder.resButton.setOnClickListener {
             // When the button is clicked, update the reserved value in the Firestore document
@@ -62,7 +68,7 @@ class TimeListAdapter (
                         val firestore = FirebaseFirestore.getInstance()
                         firestore.collection("matches").add(match)
                     }
-                    //reservePreviousTwoSlots(collection,position)
+                    reservePreviousTwoSlots(collection,position)
                     reserveNextTwoSlots(collection, position + 1)
                     reserveNextTwoSlots(collection, position + 2)
                 }

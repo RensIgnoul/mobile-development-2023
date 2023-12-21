@@ -9,7 +9,9 @@
         android:id="@+id/textViewMatchId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Match ID:" />
+        android:text="Match ID:"
+        android:textStyle="bold"
+        android:textSize="18sp"/>
 
 
 </LinearLayout>

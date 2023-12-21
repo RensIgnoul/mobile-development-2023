@@ -80,6 +80,7 @@ class EditProfileActivity:ComponentActivity() {
         saveButton.setOnClickListener {
             savePreferences()
             uploadImage()
+            startActivity(Intent(this,CourtListActivity::class.java))
         }
     }
 
@@ -128,8 +129,8 @@ class EditProfileActivity:ComponentActivity() {
                 )
                 .addOnSuccessListener {
                     Toast.makeText(this, "Preferences updated successfully", Toast.LENGTH_SHORT).show()
-                    finish()
-                    startActivity(Intent(this,ProfileActivity::class.java))
+                    //finish()
+                    //startActivity(Intent(this,ProfileActivity::class.java))
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Failed to update preferences: $e", Toast.LENGTH_SHORT).show()

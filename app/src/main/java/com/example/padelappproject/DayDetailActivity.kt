@@ -18,8 +18,8 @@ class DayDetailActivity:ComponentActivity() {
 
         val dayString = intent.getStringExtra("SELECTED_DAY")
         val courtId = intent.getStringExtra("COURT")
-        val textView = findViewById<TextView>(R.id.buttonTest)
-        textView.text = dayString
+        //val textView = findViewById<TextView>(R.id.buttonTest)
+        //textView.text = dayString
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)

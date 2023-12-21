@@ -67,7 +67,7 @@ class RegisterActivity : ComponentActivity() {
                             .document(userId)
                             .set(user)
                             .addOnSuccessListener {
-                                addTestMatchForUser(userId)
+                                //addTestMatchForUser(userId)
 
                                 Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
                                 startActivity(Intent(this, LoginActivity::class.java))

@@ -17,6 +17,7 @@ class MatchListActivity: ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.actitivity_match_list)
 
+        var firstParticipant: String = ""
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -31,9 +32,15 @@ class MatchListActivity: ComponentActivity() {
                 val matchItem = document.toObject(Match::class.java)
                 matchItem.titel = document.id
                 matchList.add(matchItem)
+
+                val participantsValues = matchItem.participants.values
+                if (participantsValues.isNotEmpty()) {
+                    // Set the first participant value to a property in your Match object
+                   firstParticipant  = participantsValues.first().toString()
+                }
             }
 
-            adapter = MatchAdapter(matchList){
+            adapter = MatchAdapter(matchList, firstParticipant){
                 match -> navigateToDetailPage(match)
             }
             recyclerView.adapter = adapter

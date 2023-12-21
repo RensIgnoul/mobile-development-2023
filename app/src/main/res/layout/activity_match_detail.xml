@@ -18,7 +18,8 @@
         android:text="Start time"
         android:textSize="18sp"
         android:layout_below="@id/MatchStartDay"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"/>
     <TextView
         android:id="@+id/MatchCourt"
         android:layout_width="wrap_content"
@@ -26,13 +27,67 @@
         android:text="Court"
         android:textSize="18sp"
         android:layout_below="@id/MatchStartTime"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listText"
+        android:textSize="18sp"
+        android:text="Player List"
+        android:layout_below="@+id/MatchCourt"
+        android:textStyle="bold"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="16dp"
+        />
 
     <Button
         android:id="@+id/buttonJoin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/MatchCourt"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/listText"
         android:text="Join" />
+    <TextView
+        android:id="@+id/PlayerName1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/buttonJoin"/>
+    <TextView
+        android:id="@+id/PlayerName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_below="@+id/PlayerName1"
+        android:layout_marginLeft="16dp"/>
+    <TextView
+        android:id="@+id/PlayerName3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_below="@+id/PlayerName2"
+        android:layout_marginLeft="16dp"/>
+    <TextView
+        android:id="@+id/PlayerName4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:layout_below="@+id/PlayerName3"
+        android:layout_marginLeft="16dp"/>
+
+    <Button
+        android:id="@+id/buttonRemove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_below="@id/PlayerName4"
+        android:text="Remove Player" />
 </RelativeLayout>

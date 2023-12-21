@@ -7,9 +7,10 @@ import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.padelappproject.Model.Match
+import com.google.firebase.firestore.FirebaseFirestore
 
 
-class MatchAdapter(private val matchList: List<Match>,
+class MatchAdapter(private val matchList: List<Match>, private val userId:String,
     private val onItemClick:(Match) -> Unit) :
     RecyclerView.Adapter<MatchAdapter.MatchViewHolder>() {
 
@@ -24,7 +25,16 @@ class MatchAdapter(private val matchList: List<Match>,
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
         val matchItem = matchList[position]
-        holder.textViewMatchId.text = "Match " +position;
+        var name = "test"
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("users").document(matchItem.participants[matchItem.participants.keys.first()].toString())
+            .get().addOnSuccessListener {
+                documentSnapshot ->
+                holder.textViewMatchId.text = documentSnapshot.getString("name").toString()+"'s Match"
+            }.addOnFailureListener{
+                name = "not working"
+            }
+        //holder.textViewMatchId.text = name+"'s Match";
 
         holder.itemView.setOnClickListener{
             onItemClick(matchItem)
